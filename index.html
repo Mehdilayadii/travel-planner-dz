@@ -2,9 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Planner DZ - Carte de Visite</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -22,7 +20,7 @@
             justify-content: center;
             background: linear-gradient(135deg, #0a1828 0%, #1e3a5f 50%, #0a1828 100%);
             padding: 20px;
-            overflow-x: hidden;
+            overflow: hidden;
             position: relative;
         }
 
@@ -366,11 +364,7 @@
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-
+        @media (max-width: 600px) {
             .business-card {
                 max-width: 100%;
                 border-radius: 20px;
@@ -380,105 +374,20 @@
                 padding: 2rem 1.5rem;
             }
 
-            .logo {
-                width: 100px;
-                height: 100px;
-            }
-
             .company-name {
-                font-size: 1.6rem;
-                word-wrap: break-word;
-            }
-
-            .tagline {
-                font-size: 0.85rem;
+                font-size: 1.8rem;
             }
 
             .card-body {
-                padding: 1.5rem;
-            }
-
-            .section-title {
-                font-size: 1.1rem;
-            }
-
-            .service-tag {
-                font-size: 0.75rem;
-                padding: 0.4rem 0.8rem;
+                padding: 2rem 1.5rem;
             }
 
             .contact-item {
                 padding: 0.6rem;
-                gap: 0.7rem;
-            }
-
-            .contact-icon {
-                width: 35px;
-                height: 35px;
-                font-size: 1rem;
-            }
-
-            .contact-label {
-                font-size: 0.7rem;
             }
 
             .contact-value {
-                font-size: 0.8rem;
-                word-break: break-word;
-            }
-
-            .btn {
-                padding: 0.9rem 2rem;
-                font-size: 0.9rem;
-            }
-
-            .social-icon {
-                width: 40px;
-                height: 40px;
-            }
-
-            .social-icon svg {
-                width: 18px;
-                height: 18px;
-            }
-
-            .card-footer {
-                font-size: 0.75rem;
-                padding: 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .company-name {
-                font-size: 1.4rem;
-            }
-
-            .service-tag {
-                font-size: 0.7rem;
-                padding: 0.35rem 0.7rem;
-            }
-
-            .btn {
-                padding: 0.8rem 1.5rem;
                 font-size: 0.85rem;
-            }
-
-            .social-links {
-                gap: 0.7rem;
-            }
-        }
-
-        /* Tablet */
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .business-card {
-                max-width: 600px;
-            }
-        }
-
-        /* Large screens */
-        @media (min-width: 1025px) {
-            .business-card {
-                max-width: 550px;
             }
         }
 
@@ -533,11 +442,11 @@
                         </div>
                     </a>
 
-                    <a href="/cdn-cgi/l/email-protection#2256504354474e0c524e434c4c47500c434e4547504b4362454f434b4e0c414d4f" class="contact-item">
+                    <a href="mailto:travel.planner.algeria@gmail.com" class="contact-item">
                         <div class="contact-icon">✉️</div>
                         <div class="contact-details">
                             <div class="contact-label">Email</div>
-                            <div class="contact-value"><span class="__cf_email__" data-cfemail="bdc9cfdccbd8d193cdd1dcd3d3d8cf93dcd1dad8cfd4dcfddad0dcd4d193ded2d0">[email&#160;protected]</span></div>
+                            <div class="contact-value">travel.planner.algeria@gmail.com</div>
                         </div>
                     </a>
 
@@ -585,28 +494,23 @@
     </div>
 
     <script>
-        // Détection de l'appareil
-        const isMobile = window.innerWidth <= 768;
-        
-        // Add subtle parallax effect on mouse move (desktop only)
-        if (!isMobile) {
-            document.addEventListener('mousemove', (e) => {
-                const card = document.querySelector('.business-card');
-                const { clientX, clientY } = e;
-                const { innerWidth, innerHeight } = window;
-                
-                const xRotation = ((clientY / innerHeight) - 0.5) * 10;
-                const yRotation = ((clientX / innerWidth) - 0.5) * -10;
-                
-                card.style.transform = `perspective(1000px) rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
-            });
+        // Add subtle parallax effect on mouse move
+        document.addEventListener('mousemove', (e) => {
+            const card = document.querySelector('.business-card');
+            const { clientX, clientY } = e;
+            const { innerWidth, innerHeight } = window;
+            
+            const xRotation = ((clientY / innerHeight) - 0.5) * 10;
+            const yRotation = ((clientX / innerWidth) - 0.5) * -10;
+            
+            card.style.transform = `perspective(1000px) rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
+        });
 
-            // Reset on mouse leave
-            document.addEventListener('mouseleave', () => {
-                const card = document.querySelector('.business-card');
-                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
-            });
-        }
+        // Reset on mouse leave
+        document.addEventListener('mouseleave', () => {
+            const card = document.querySelector('.business-card');
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+        });
 
         // Add click animation to contact items
         document.querySelectorAll('.contact-item').forEach(item => {
@@ -617,16 +521,6 @@
                 }, 100);
             });
         });
-
-        // Empêcher le zoom sur double-tap (iOS)
-        let lastTouchEnd = 0;
-        document.addEventListener('touchend', function(event) {
-            const now = (new Date()).getTime();
-            if (now - lastTouchEnd <= 300) {
-                event.preventDefault();
-            }
-            lastTouchEnd = now;
-        }, false);
     </script>
 </body>
 </html>
